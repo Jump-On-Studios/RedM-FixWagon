@@ -15,11 +15,13 @@ Citizen.CreateThread(function()
 				if IsPedWalking(horse) then
 					-- Delete driver & wagon
 					driver = Citizen.InvokeNative(0x2963B5C1637E8A27,wagon)
-					if driver then
-						DeleteEntity(driver)
+					if driver ~= PlayerPedId() then
+						if driver then
+							DeleteEntity(driver)
+						end
+						DeleteEntity(wagon)
+						print('Delete buggy wagon')
 					end
-					DeleteEntity(wagon)
-					print('Delete buggy wagon')
 				end
 			end
 		end
