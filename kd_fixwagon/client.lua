@@ -1,3 +1,11 @@
+local function RemoveVehicleLightPropSets(...)
+ return Citizen.InvokeNative(0xE31C0CB1C3186D40,...)
+end
+
+local function RemoveVehiclePropSets(...)
+ return Citizen.InvokeNative(0x3BCF32FF37EA9F1D,...)
+end
+
 Citizen.CreateThread(function()
 	local vehiclePool = {}
 	local wagon = 0
@@ -19,6 +27,8 @@ Citizen.CreateThread(function()
 						if driver then
 							DeleteEntity(driver)
 						end
+						RemoveVehicleLightPropSets(wagon)
+						RemoveVehiclePropSets(wagon)
 						DeleteEntity(wagon)
 						print('Delete buggy wagon')
 					end
