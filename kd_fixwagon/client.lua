@@ -16,7 +16,7 @@ Citizen.CreateThread(function()
 		for i = 1, #vehiclePool do -- loop through each vehicle (entity)
 			wagon = vehiclePool[i]
 			-- Is wagon stopped
-			if IsEntityAVehicle(wagon) and IsVehicleStopped(wagon) then
+			if IsEntityAVehicle(wagon) and IsVehicleStopped(wagon) and not IsEntityAMissionEntity(wagon) then
 				-- Get the horse
 				horse = Citizen.InvokeNative(0xA8BA0BAE0173457B,wagon,0)
 				-- If vehicle stopped but the horse walks = buggy wagon
